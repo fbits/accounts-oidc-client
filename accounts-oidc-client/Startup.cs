@@ -34,15 +34,14 @@ namespace accounts_oidc_client
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
-            services.AddRazorPages();
-
+            services.AddRazorPages();            
             services.AddAuthentication()
             .AddOpenIdConnect("oidc", "Tray Corp", options =>
             {
                 options.SignInScheme = IdentityConstants.ExternalScheme;
-                options.Authority = "https://accounts-hlog.fbits.net";
+                options.Authority = Configuration.GetValue<string>("Authority");
                 options.RequireHttpsMetadata = false;
-                options.ClientId = "Accounts - OIDC Client Local";
+                options.ClientId = Configuration.GetValue<string>("ClientId");
                 options.ResponseType = "code";
                 options.SaveTokens = true;
                 options.UsePkce = true;
