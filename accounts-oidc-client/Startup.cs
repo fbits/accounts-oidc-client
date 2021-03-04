@@ -1,4 +1,5 @@
 using accounts_oidc_client.Data;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -50,6 +51,8 @@ namespace accounts_oidc_client
                 options.Scope.Add("currentStore");
                 options.Scope.Add("username");
                 options.ClientSecret = "982f5756-7087-4505-b559-e9cffa4565c0";
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.ClaimActions.MapAll();
             });
         }
 
