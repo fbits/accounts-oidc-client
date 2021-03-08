@@ -48,6 +48,7 @@ namespace accounts_oidc_client
                 options.Scope.Add("profile");
                 options.Scope.Add("email");
                 options.Scope.Add("currentStore");
+                options.Scope.Add("storeStatus");
                 options.Scope.Add("username");
                 options.ClientSecret = "982f5756-7087-4505-b559-e9cffa4565c0";
                 options.GetClaimsFromUserInfoEndpoint = true;
